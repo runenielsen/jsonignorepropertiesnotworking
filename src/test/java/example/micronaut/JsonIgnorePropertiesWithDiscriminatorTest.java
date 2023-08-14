@@ -24,7 +24,7 @@ class JsonIgnorePropertiesWithDiscriminatorTest {
 
         var testModelStr = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(testModel);
 
-        Assertions.assertEquals("{\"type\":\"BASIC\",\"name\":\"The Neverending Story\",\"author\":\"Michael Ende\"}", testModelStr);
+        Assertions.assertEquals("{\"type\":\"BASIC\",\"author\":\"Michael Ende\",\"name\":\"The Neverending Story\"}", testModelStr);
     }
 
     @Test
@@ -35,6 +35,6 @@ class JsonIgnorePropertiesWithDiscriminatorTest {
 
         var testModelStr = objectMapper.writeValueAsString(testModel);
 
-        Assertions.assertEquals("{\"type\":\"BASIC\",\"name\":\"The Neverending Story\",\"author\":\"Michael Ende\"}", testModelStr);
+        Assertions.assertEquals("{\"type\":\"BASIC\",\"author\":\"Michael Ende\",\"name\":\"The Neverending Story\"}", testModelStr);
     }
 }

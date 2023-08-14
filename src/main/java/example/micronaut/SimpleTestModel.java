@@ -2,14 +2,19 @@ package example.micronaut;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 
+@Serdeable
+@JsonPropertyOrder({
+        "testProperty2",
+        "testProperty1"
+})
 @JsonIgnoreProperties(
         value = "testProperty2"
 )
 @Introspected
-@Serdeable
 public class SimpleTestModel {
 
     @JsonIgnore

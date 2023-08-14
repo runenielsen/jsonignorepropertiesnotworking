@@ -9,6 +9,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Serdeable
+@JsonPropertyOrder({
+        "name",
+        "type"
+})
 @JsonIgnoreProperties(
   value = "type"
 )

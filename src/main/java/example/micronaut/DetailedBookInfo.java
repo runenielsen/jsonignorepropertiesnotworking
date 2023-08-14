@@ -1,9 +1,14 @@
 package example.micronaut;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
+@JsonPropertyOrder({
+        "author",
+        "isbn"
+})
 @Introspected
 public class DetailedBookInfo extends BookInfo {
 
