@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 @MicronautTest
-class JsonIgnoreTest {
+class JsonIgnorePropertiesSimpleTest {
 
     private final ObjectMapper objectMapper;
 
-    public JsonIgnoreTest(ObjectMapper objectMapper) {
+    public JsonIgnorePropertiesSimpleTest(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
     @Test
     void testJacksonSerializationWithJsonIgnore() throws IOException {
-        var testModel = new TestModel();
+        var testModel = new SimpleTestModel();
         testModel.setTestProperty1("testValue1");
         testModel.setTestProperty2("testValue2");
         var testModelStr = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(testModel);
@@ -28,7 +28,7 @@ class JsonIgnoreTest {
 
     @Test
     void testMicronautSerializationWithJsonIgnore() throws IOException {
-        var testModel = new TestModel();
+        var testModel = new SimpleTestModel();
         testModel.setTestProperty1("testValue1");
         testModel.setTestProperty2("testValue2");
         var testModelStr = objectMapper.writeValueAsString(testModel);
@@ -39,7 +39,7 @@ class JsonIgnoreTest {
     @Test
     void testJacksonDeserializationWithJsonIgnore() throws IOException {
         var testModel = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
-                "{\"testProperty1\":\"testValue1\",\"testProperty2\":\"testValue2\"}", TestModel.class);
+                "{\"testProperty1\":\"testValue1\",\"testProperty2\":\"testValue2\"}", SimpleTestModel.class);
 
         Assertions.assertEquals("TestModel{testProperty1='null', testProperty2='null'}", testModel.toString());
     }
@@ -47,7 +47,7 @@ class JsonIgnoreTest {
     @Test
     void testMicronautDeserializationWithJsonIgnore() throws IOException {
         var testModel = objectMapper.readValue(
-                "{\"testProperty1\":\"testValue1\",\"testProperty2\":\"testValue2\"}", TestModel.class);
+                "{\"testProperty1\":\"testValue1\",\"testProperty2\":\"testValue2\"}", SimpleTestModel.class);
 
         Assertions.assertEquals("TestModel{testProperty1='null', testProperty2='null'}", testModel.toString());
     }

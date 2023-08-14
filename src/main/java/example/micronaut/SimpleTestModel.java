@@ -10,7 +10,7 @@ import io.micronaut.serde.annotation.Serdeable;
 )
 @Introspected
 @Serdeable
-public class TestModel {
+public class SimpleTestModel {
 
     @JsonIgnore
     private String testProperty1;
