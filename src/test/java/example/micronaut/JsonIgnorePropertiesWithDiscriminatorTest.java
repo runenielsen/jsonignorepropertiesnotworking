@@ -18,7 +18,7 @@ class JsonIgnorePropertiesWithDiscriminatorTest {
 
     @Test
     void testJacksonSerializationWithJsonIgnoreProperties() throws IOException {
-        var testModel = new BasicBookInfo("Michael Ende", "The Neverending Story", BookInfo.TypeEnum.BASIC);
+        var testModel = new BasicBookInfo("Michael Ende", "The Neverending Story", BookInfo.TypeEnum.DETAILED);
 
         var testModelStr = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(testModel);
 
@@ -27,7 +27,7 @@ class JsonIgnorePropertiesWithDiscriminatorTest {
 
     @Test
     void testMicronautSerializationWithJsonIgnoreProperties() throws IOException {
-        var testModel = new BasicBookInfo("Michael Ende", "The Neverending Story", BookInfo.TypeEnum.BASIC);
+        var testModel = new BasicBookInfo("Michael Ende", "The Neverending Story", BookInfo.TypeEnum.DETAILED);
 
         var testModelStr = objectMapper.writeValueAsString(testModel);
 
